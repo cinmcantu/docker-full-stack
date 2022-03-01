@@ -4,7 +4,7 @@ WORKDIR /home/web/react
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --silent
 
 COPY . .
 

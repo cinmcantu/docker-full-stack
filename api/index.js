@@ -9,16 +9,17 @@ app.use(cors())
 const connection = mysql.createConnection({
     host: 'mysql-container',
     user: 'root',
-    password: 'teste',
-    database: 'produtos' // use produtos;
+    password: 'fullstack',
+    database: 'produtos'
 })
 
-app.get('/produtos', (req,res)=>{ // randomuser.me/api
+app.get('/produtos', (req,res)=>{
     connection.query('SELECT * FROM produtos', (error, results)=>{
         if(error){
             res.json(error)
+        }else{
+            res.json(results)
         }
-        res.json(results)
     })
 })
 

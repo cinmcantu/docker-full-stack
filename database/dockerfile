@@ -1,7 +1,9 @@
 FROM mysql:5.7
 
-ENV MYSQL_ROOT_PASSWORD teste
+ENV MYSQL_ROOT_PASSWORD fullstack
 
 ENV MYSQL_DATABASE produtos
+
+EXPOSE 3306
 
 COPY ./script.sql /docker-entrypoint-initdb.d/

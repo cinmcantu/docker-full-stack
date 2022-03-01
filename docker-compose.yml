@@ -1,10 +1,8 @@
 version: "3.9"
 services:
   db:
-    image: mysql:5.7
+    build: "./database"
     container_name: mysql-container
-    environment:
-      - MYSQL_ROOT_PASSWORD=teste
     volumes:
       - ./database/data/:/var/lib/mysql
     ports:
