@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=teste
+    volumes:
+      - ./database/data/:/var/lib/mysql
+    ports:
+      - "3030:3306"
+  
+  api:
+    build: "./api"
+    container_name: node-container
+    volumes:
+      - ./api/:/home/node/app
+    ports:
+      - "8080:8888"
+    depends_on:
+      - db
+  
+  web:
+    build: "./web"
+    container_name: react-container
+    volumes:
+      - ./web/:/home/web/react/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "db"
+      - "api"
+    links:
+      - "api:backend"
+
+      
+
+    

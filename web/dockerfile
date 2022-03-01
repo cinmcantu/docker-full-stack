@@ -1,0 +1,11 @@
+FROM node:16-slim
+
+WORKDIR /home/web/react
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD npm start
