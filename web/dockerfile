@@ -1,10 +1,12 @@
 FROM node:16-slim
 
-WORKDIR /home/web/react
+RUN mkdir /home/web/
+
+WORKDIR /home/web/
 
 COPY package*.json ./
 
-RUN npm install --silent
+RUN npm install
 
 COPY . .
 

@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 
 const connection = mysql.createConnection({
-    host: 'mysql-container',
+    host: 'database',
     user: 'root',
     password: 'fullstack',
     database: 'produtos'

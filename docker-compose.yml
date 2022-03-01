@@ -2,7 +2,7 @@ version: "3.9"
 services:
   db:
     build: "./database"
-    container_name: mysql-container
+    container_name: mysql-container-fs
     volumes:
       - ./database/data/:/var/lib/mysql
     ports:
@@ -10,19 +10,23 @@ services:
   
   api:
     build: "./api"
-    container_name: node-container
+    container_name: node-container-fs
     volumes:
       - ./api/:/home/node/app
+      - /home/node/app/node_modules
     ports:
       - "8080:8888"
     depends_on:
       - db
-  
+    links:
+      - "db:database"
+
   web:
     build: "./web"
-    container_name: react-container
+    container_name: react-container-fs
     volumes:
-      - ./web/:/home/web/react/
+      - ./web/:/home/web
+      - /home/web/node_modules
     ports:
       - "3000:3000"
     depends_on:
@@ -30,7 +34,3 @@ services:
       - "api"
     links:
       - "api:backend"
-
-      
-
-    

@@ -1,10 +1,12 @@
 FROM node:16-slim
 
+RUN mkdir /home/node/app
+
 WORKDIR /home/node/app
 
 COPY package*.json ./
 
-RUN npm install --silent
+RUN npm install
 
 COPY . .
 
