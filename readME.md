@@ -31,3 +31,8 @@ Para parar os containers basta rodar:
 ```
 docker-compose stop
 ```
+
+## Variáveis de Ambiente
+
+Por motivos didáticos foi criado um arquivo `.env` com as informações do banco de dados.
+Para rodar, copie o arquivo `.env.example` e renomei a cópia para `.env`. Insira as informações de Usuario e Senha do seu banco de dados (no caso da conexão com container, usar Usuario `root` e Senha `fullstack`).
